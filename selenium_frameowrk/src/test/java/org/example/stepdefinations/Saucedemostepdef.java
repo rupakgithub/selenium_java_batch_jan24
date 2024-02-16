@@ -22,14 +22,14 @@ public class Saucedemostepdef {
         driver.get("https://www.saucedemo.com/");
     }
 
-    @When("User enters username {string}")
-    public void user_enters_username(String username) {
+    @When("User enters username {int}")
+    public void user_enters_username(Integer username) {
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
 
 
     }
-    @When("User enters password {string}")
-    public void user_enters_password(String password) {
+    @When("User enters password {int}")
+    public void user_enters_password(Integer password) {
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
 
         driver.findElement(By.id("login-button")).click();
