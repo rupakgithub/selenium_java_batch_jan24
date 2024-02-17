@@ -21,7 +21,7 @@ public class NestedFrameexample {
 
     @BeforeTest
     public void beforetest(){
-        WebDriverManager.chromedriver().clearDriverCache().setup();
+        WebDriverManager.chromedriver().driverVersion("121.0.6167.185").clearDriverCache().setup();
 
         ChromeOptions ops = new ChromeOptions();
         ops.addArguments("--remote-allow-origins=*");

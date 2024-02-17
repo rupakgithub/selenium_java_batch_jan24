@@ -1,5 +1,6 @@
 package org.example.stepdefinations;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -7,7 +8,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Saucedemostepdef {
@@ -41,5 +44,31 @@ public class Saucedemostepdef {
         String title = driver.getTitle();
         System.out.println("The title of the website is: "+title);
         driver.quit();
+    }
+
+    @Given("HR searching for {string} for post of {string} {string}")
+    public void hr_searching_for_for_post_of(String job_title, String total, String vacancy) {
+
+        System.out.println(">>>>>>>>>>>>>>>>>>>>");
+        System.out.println(job_title);
+        System.out.println(total);
+        System.out.println(vacancy);
+        if(vacancy.equals("Architect")){
+            Assert.fail("Test failure");
+        }
+    }
+
+    @When("User enterss corrects credentials")
+    public void user_enterss_corrects_credentials(DataTable dataTable) {
+        List<List<String>> data = dataTable.asLists(String.class);
+        for(List<String> columns: data) {
+            System.out.println(columns.get(0));
+            System.out.println(columns.get(1));
+        }
+    }
+
+    @Then("User shoulds be ables to login")
+    public void user_shoulds_be_ables_to_login() {
+        System.out.println("login successful");
     }
 }
