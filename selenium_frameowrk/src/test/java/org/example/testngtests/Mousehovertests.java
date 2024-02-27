@@ -1,6 +1,7 @@
 package org.example.testngtests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.example.utilities.Commonfunctions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -34,6 +35,7 @@ public class Mousehovertests {
         ops.addArguments("--remote-allow-origins=*");
         ops.addArguments("--start-maximized");
         ops.addArguments("--incognito");
+        ops.addArguments("--headless=new");
         ops.setExperimentalOption("useAutomationExtension", false);
         ops.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
         driver = new ChromeDriver(ops);
@@ -104,6 +106,7 @@ public class Mousehovertests {
     public void test_new_window() {
         driver.get("https://demoqa.com/browser-windows");
         String currentwindowid = driver.getWindowHandle();
+//        Commonfunctions.click(By.xpath("//button[@id='windowButton']"), driver);
         driver.findElement(By.xpath("//button[@id='windowButton']")).click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));

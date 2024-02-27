@@ -19,7 +19,10 @@ public class Saucedemostepdef {
 
     @Given("User initilize the browser")
     public void user_initilize_the_browser() {
-        WebDriverManager.chromedriver().clearDriverCache().setup();
+//        WebDriverManager.chromedriver().clearDriverCache().setup();
+        String rootpath = System.getProperty("user.dir");
+        System.setProperty("webdriver.chrome.driver", rootpath+"/src/test/resources/driver/chromedriver.exe");
+
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         driver.get("https://www.saucedemo.com/");
