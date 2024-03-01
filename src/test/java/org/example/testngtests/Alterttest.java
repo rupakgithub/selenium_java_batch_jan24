@@ -30,20 +30,16 @@ public class Alterttest {
         String rootpath = System.getProperty("user.dir");
         System.setProperty("webdriver.chrome.driver", rootpath+"/src/test/resources/driver/chromedriver.exe");
 
-        String downloadFilepath = "C:\\Users\\Rupayan\\Desktop\\ISutra\\Framework\\selenium_java_batch_jan24\\selenium_frameowrk\\src\\test\\downloads";
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
         chromePrefs.put("profile.default_content_settings.popups", 0);
-//        chromePrefs.put("download.default_directory", downloadFilepath);
         chromePrefs.put("download.default_directory",  System.getProperty("user.dir")+ File.separator + "src" + File.separator + "test" + File.separator+"downloads");
         chromePrefs.put("download.prompt_for_download", false);
-        chromePrefs.put("directory_upgrade", true);
 
         ChromeOptions ops = new ChromeOptions();
         ops.addArguments("--remote-allow-origins=*");
         ops.addArguments("--start-maximized");
-        ops.addArguments("--incognito");
         ops.addArguments("--disable-extensions");
-//        ops.addArguments("--headless=new");
+        ops.addArguments("--headless=new");
         ops.setExperimentalOption("prefs", chromePrefs);
         ops.setExperimentalOption("useAutomationExtension", false);
         ops.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
@@ -134,6 +130,9 @@ public class Alterttest {
                 actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
             }
         }
+
+        int slider_value_after = Integer.parseInt(slider.getAttribute("value"));
+        Assert.assertEquals(slider_value_after, des_slider_value);
     }
 
     @Test
@@ -175,7 +174,6 @@ public class Alterttest {
     public void test_download() throws InterruptedException {
         driver.get("https://demoqa.com/upload-download");
         By download_loc = By.xpath("//a[@id='downloadButton']");
-//        WebElement button = driver.findElement(download_loc);
         Commonfunctions.click(download_loc, driver);
 
     }

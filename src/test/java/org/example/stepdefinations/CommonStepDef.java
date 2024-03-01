@@ -13,6 +13,7 @@ public class CommonStepDef {
         System.out.println("Cucumber all steps executed");
     }
 
+
     @AfterStep
     public void tearDown(Scenario scenario){
         if (scenario.isFailed()){
